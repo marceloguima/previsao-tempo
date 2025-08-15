@@ -1,33 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Previsão Do Tempo</title>
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-    <main>
-        <h1>Previsão Do Tempo</h1>
-        <form>
-            <input type="text" placeholder="Digite o nome da cidade">
-            <button type="submit">Buscar</button>
-        </form>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Previsão Do Tempo</title>
+        <link rel="stylesheet" href="./style.css" />
 
-        <div class="container-info">
-            <p class="cidade">Tempo em Jaru</p>
-            <div class="situacao-tempo">
-                <div class="grau-img">
-                    <p class="grau">15°</p>
-                    <img src="" alt="">
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+            integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <main>
+            <h1>Previsão Do Tempo</h1>
+            <form id="form">
+                <input id="cidade-busca" type="text" placeholder="Digite o nome da cidade" />
+                <button type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+
+            <div class="container-info">
+                <p class="cidade">Tempo em Jaru</p>
+                <div class="situacao-tempo">
+                    <div class="grau-img">
+                        <p class="grau">15°</p>
+                        <img id="img-tempo" src="./image/weather-7248402_640.png" alt="" />
+                    </div>
+                    <p class="p-situacao">Parcilmente nublado</p>
                 </div>
-                <p class="p-situacao">Parcilmente nublado</p>
             </div>
-        </div>
+        </main>
 
-
-    </main>
-    
-    <script src="./app.js"></script>
-</body>
+        <script src="./app.js"></script>
+    </body>
 </html>
