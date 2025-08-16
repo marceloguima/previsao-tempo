@@ -4,21 +4,15 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Previsão Do Tempo</title>
+        <!-- Meu css -->
         <link rel="stylesheet" href="./style.css" />
 
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
-            integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-        />
-
+        <!-- Bootstrap icons -->
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
         />
-
+        <!-- Google fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -28,17 +22,25 @@
     </head>
     <body id="body">
         <main>
-            <h1>Previsão Do Tempo</h1>
-            <form id="form">
-                <input
-                    id="cidade-busca"
-                    type="text"
-                    placeholder="Digite o nome da cidade"
-                />
-                <button type="submit">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </form>
+            <h1 class="titulo">Previsão Do Tempo</h1>
+            <div class="mensagem-form">
+                <p class="mensagem">
+                    Informe sua cidade e acompanhe as condições do clima em
+                    tempo real.
+                </p>
+
+                <form id="form">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <input
+                        id="cidade-busca"
+                        type="text"
+                        placeholder="Digite o nome da cidade"
+                    />
+                    <button type="submit">
+                       <i class="bi bi-search"></i>
+                    </button>
+                </form>
+            </div>
 
             <div class="container-info">
                 <p class="cidade"></p>

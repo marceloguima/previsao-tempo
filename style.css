@@ -1,28 +1,30 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-      font-family: "Roboto", sans-serif;
-
+    font-family: "Roboto", sans-serif;
 }
 
-body{
-background-image: url(./image/mountains-gelo.jpg);
-background-repeat: no-repeat;
-background-size: cover;
-background-position: center;
-width: 100vw;
-height: 100vh;
-display: flex;
-justify-content: center;
-padding: 5px;
-
-
+body {
+    background-image: url(./image/img-fundo-inicial.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
 }
 
-main{
+h1 {
+    color: #292929;
+    margin-top: 10px;
+}
+
+main {
     width: 100%;
-    max-width: 350px;
+    max-width: 330px;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -30,75 +32,114 @@ main{
     padding: 20px 0;
 }
 
-form{
-    margin-top: 30px;
-      background-color: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(30px);
+.mensagem-form {
     width: 100%;
-    height: 35px;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(30px);
     border-radius: 10px;
+    padding: 10px;
+    margin-top: 40px;
 }
 
- input{
-    width: 85%;
+.mensagem {
+    text-align: center;
+    font-size: 0.9em;
+    color: #161616;
+}
+
+form {
+    margin-top: 30px;
+    background: #f8f8f8;
+    box-shadow: 1px 2px 4px;
+    width: 95%;
+    margin: 30px auto;
+    height: 45px;
+    border-radius: 10px;
+    padding: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ícone de localização */
+form i {
+    font-size: 1.3em;
+}
+
+input {
+    width: 80%;
     height: 100%;
     padding: 5px;
+    font-size: 1em;
     border-radius: 10px;
     outline: none;
     border: none;
-    background: transparent;
- }
+    /* background: transparent; */
+}
 
+input:focus {
+    /* background: transparent; */
+    outline: none;
+}
 
- button{
-    width: 30px;
-    height: 30px;
+button {
+    width: 40px;
+    height: 40px;
     background: transparent;
     border: none;
     border-radius: 10px;
     font-size: 1rem;
     cursor: pointer;
- }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-.container-info{
+button:hover {
+    background: #d8d8d8;
+}
+
+.container-info {
     background-color: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(30px);
     width: 100%;
     height: auto;
     border-radius: 10px;
-    margin-top: 150px;
-    padding: 10px;
-    
+    margin-top: 30px;
+    padding: 20px 10px;
+    display: none;
 }
 
-.cidade{
+.cidade {
     font-size: 1.3rem;
     font-weight: 600;
 }
 
-.temp-div{
+.temp-div {
     display: flex;
     margin: 10px 0;
     width: 70%;
     height: 80px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
-img{
+img {
     width: 60px;
 }
 
-.temp{
-    font-size: 3rem;
+.temp {
+    font-size: 2.5rem;
+    font-weight: 600;
 }
 
-.situacao-tempo{
+.situacao-tempo {
     width: 100%;
 }
 
-.umidade-max-min{
+.umidade-max-min {
     display: grid;
     grid-template-columns: 150px 150px;
     grid-template-rows: auto auto;
@@ -106,16 +147,21 @@ img{
     height: 140px;
     padding: 10px 2px;
     border-radius: 5px;
-   justify-content: space-between;
-   row-gap: 30px;
+    justify-content: space-between;
+    row-gap: 30px;
 }
 
-.umidade-max-min i{
+.umidade-max-min i {
     font-size: 1.4rem;
 }
 
-.temp-max, .temp-min, .vel-vento, .umidade-ar{
-    width: 150px;
+.temp-max,
+.temp-min,
+.vel-vento,
+.umidade-ar {
+    width: 95%;
+    max-width: 150px;
+    font-size: 0.9rem;
     height: 50px;
     background: #ffffff5b;
     display: flex;
@@ -124,40 +170,38 @@ img{
     gap: 5px;
     border-radius: 5px;
     box-shadow: 1px 2px 4px;
-  
 }
 
-.temp-max{
+.temp-max {
     grid-column: 1 / 2;
 }
 
-.temp-max i{
+.temp-max i {
     color: #e43b08;
 }
 
-.temp-min{
+.temp-min {
     grid-column: 2 / 3;
 }
 
-.temp-min i{
+.temp-min i {
     color: #0893e4;
 }
 
-.vel-vento{
+.vel-vento {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
 }
 
-.vel-vento i{
+.vel-vento i {
     color: #0893e4;
 }
 
-.umidade-ar{
+.umidade-ar {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
 }
 
-.umidade-ar i{
+.umidade-ar i {
     color: #0893e4;
 }
-
