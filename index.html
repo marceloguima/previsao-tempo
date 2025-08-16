@@ -14,6 +14,11 @@
             referrerpolicy="no-referrer"
         />
 
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+        />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -21,24 +26,50 @@
             rel="stylesheet"
         />
     </head>
-    <body>
+    <body id="body">
         <main>
             <h1>Previsão Do Tempo</h1>
             <form id="form">
-                <input id="cidade-busca" type="text" placeholder="Digite o nome da cidade" />
+                <input
+                    id="cidade-busca"
+                    type="text"
+                    placeholder="Digite o nome da cidade"
+                />
                 <button type="submit">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
             </form>
 
             <div class="container-info">
-                <p class="cidade">Tempo em Jaru</p>
+                <p class="cidade"></p>
                 <div class="situacao-tempo">
-                    <div class="grau-img">
-                        <p class="grau">15°</p>
-                        <img id="img-tempo" src="./image/weather-7248402_640.png" alt="" />
+                    <p class="temp">°C</p>
+                    <div class="temp-div">
+                        <img
+                            id="img-tempo"
+                            src="./image/weather-7248402_640.png"
+                            alt=""
+                        />
+                        <p class="p-situacao"></p>
                     </div>
-                    <p class="p-situacao">Parcilmente nublado</p>
+                    <div class="umidade-max-min">
+                        <div class="temp-max">
+                            <i class="bi bi-thermometer-sun"></i>
+                            <p class="t-max"></p>
+                        </div>
+                        <div class="temp-min">
+                            <i class="bi bi-thermometer-snow"></i>
+                            <p class="t-mim"></p>
+                        </div>
+                        <div class="vel-vento">
+                            <i class="bi bi-wind"></i>
+                            <p class="v-vento"></p>
+                        </div>
+                        <div class="umidade-ar">
+                            <i class="bi bi-moisture"></i>
+                            <p class="umidade"></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>

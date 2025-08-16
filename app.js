@@ -1,6 +1,52 @@
 const formulario = document.getElementById("form");
-const cidadeBuscada = document.getElementById("cidade-busca");
 const cidade = document.querySelector(".cidade");
-const grau = document.querySelector(".grau");
 const imagemTempo = document.getElementById("img-tempo");
-const situacaoTempo = document.querySelector(".p-situacao");
+const umidadeAr = document.querySelector(".umidade");
+const temp = document.querySelector(".temp");
+const tempMax = document.querySelector(".t-max");
+const tempMim = document.querySelector(".t-mim");
+const velVento = document.querySelector(".v-vento");
+
+let situacaoTempo = document.querySelector(".p-situacao");
+
+const kei = "42e7199bda86e079fb5097d63be93d2a";
+
+const meuBody = document.getElementById("body")
+
+
+async function buscaCidade(cidadeBuscada) {
+    const dados = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${cidadeBuscada}&appid=${kei}&lang=pt_br&units=metric`
+    ).then((resposta) => resposta.json());
+    renderizaDados(dados);
+    console.log(dados);
+}
+
+const renderizaDados = (dados) => {
+    cidade.textContent = `Tempo em ${dados.name}`;
+    temp.textContent = dados.main.temp.toFixed(0) + "°C";
+    situacaoTempo.textContent = dados.weather[0].description;
+    tempMax.textContent = `Temp. Max ${dados.main.temp_max.toFixed(0)}`;
+    tempMim.textContent = `Temp. Mim ${dados.main.temp_min.toFixed(0)}`;
+
+    const ventoEmKmHora = dados.wind.speed * 3.6
+    velVento.textContent = `Vento ${ventoEmKmHora.toFixed(2)}km/h`
+
+    umidadeAr.textContent = `Umidade ${dados.main.humidity}%`;
+
+    if(dados.weather[0].description === "nublado"){
+meuBody.style.backgroundImage = "url(./image/nublado.jpg)"
+    }else if(dados.weather[0].description === "nuvens dispersas"){
+        meuBody.style.backgroundImage = "url(./image/nuvens-dispersas.jpg)"
+    }else{
+         meuBody.style.backgroundImage = "url(./image/chuva.jpg)"
+    }
+};
+
+formulario.addEventListener("submit", (evento) => {
+    evento.preventDefault();
+    const cidadeBuscada = document.getElementById("cidade-busca").value;
+    buscaCidade(cidadeBuscada);
+});
+
+
