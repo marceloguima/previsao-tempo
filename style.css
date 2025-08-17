@@ -44,7 +44,7 @@ main {
 
 .mensagem {
     text-align: center;
-    font-size: 0.9em;
+    font-size: 1.1em;
     color: #161616;
 }
 
@@ -109,6 +109,11 @@ button:hover {
     margin-top: 30px;
     padding: 20px 10px;
     display: none;
+}
+
+/* coloca as primeiras letras maiusculas */
+.container-info p{
+ text-transform: capitalize;
 }
 
 .cidade {
