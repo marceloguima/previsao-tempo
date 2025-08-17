@@ -10,6 +10,7 @@ const titulo = document.querySelector(".titulo");
 
 let situacaoTempo = document.querySelector(".p-situacao");
 
+// minha chave da API
 const kei = "42e7199bda86e079fb5097d63be93d2a";
 
 const meuBody = document.getElementById("body");
@@ -31,7 +32,9 @@ const renderizaDados = (dados) => {
     tempMim.textContent = `Temp. Min. ${dados.main.temp_min.toFixed(0)}`;
     imagemTempo.src = `https://openweathermap.org/img/wn/${dados.weather[0].icon}.png`;
 
+    // pega o valor do vento em mt/s e transforma em km/h
     const ventoEmKmHora = dados.wind.speed * 3.6;
+    
     velVento.textContent = `Vento ${ventoEmKmHora.toFixed(2)}km/h`;
 
     umidadeAr.textContent = `Umidade ${dados.main.humidity}%`;
@@ -46,15 +49,19 @@ const renderizaDados = (dados) => {
         description === "algumas nuvens"
     ) {
         meuBody.style.backgroundImage = "url(./image/nuvens-dispersas.jpg)";
+
     } else if (
         description === "névoa" ||
         description === "neblina"
     ) {
         meuBody.style.backgroundImage = "url(./image/nevoa.jpg)";
+
     } else if (description.includes("chuva")) {
         meuBody.style.backgroundImage = "url(./image/chuva.jpg)";
+
     } else if (description === "céu limpo") {
         meuBody.style.backgroundImage = "url(./image/ceu-limpo.jpg)";
+
     } else {
         meuBody.style.backgroundImage = "url(./image/img-fundo-inicial.jpg)";
     }
