@@ -6,7 +6,7 @@ const temp = document.querySelector(".temp");
 const tempMax = document.querySelector(".t-max");
 const tempMim = document.querySelector(".t-mim");
 const velVento = document.querySelector(".v-vento");
-const titulo = document.querySelector(".titulo")
+const titulo = document.querySelector(".titulo");
 
 let situacaoTempo = document.querySelector(".p-situacao");
 
@@ -29,33 +29,34 @@ const renderizaDados = (dados) => {
     situacaoTempo.textContent = dados.weather[0].description;
     tempMax.textContent = `Temp. Max. ${dados.main.temp_max.toFixed(0)}`;
     tempMim.textContent = `Temp. Min. ${dados.main.temp_min.toFixed(0)}`;
-    imagemTempo.src = `https://openweathermap.org/img/wn/${dados.weather[0].icon}.png`
+    imagemTempo.src = `https://openweathermap.org/img/wn/${dados.weather[0].icon}.png`;
 
-  
     const ventoEmKmHora = dados.wind.speed * 3.6;
     velVento.textContent = `Vento ${ventoEmKmHora.toFixed(2)}km/h`;
 
     umidadeAr.textContent = `Umidade ${dados.main.humidity}%`;
 
-    if (dados.weather[0].description === "nublado") {
+    const description =  dados.weather[0].description
+    if (description === "nublado") {
         meuBody.style.backgroundImage = "url(./image/nublado.jpg)";
         // quando nublado muda o título pra branco por motivos de contraste
-        titulo.style.color = "#fff"
-        return
-
-    } else if (dados.weather[0].description === "nuvens dispersas" || "algumas nuvens") {
+        titulo.style.color = "#fff";
+    } else if (
+        description === "nuvens dispersas" ||
+        description === "algumas nuvens"
+    ) {
         meuBody.style.backgroundImage = "url(./image/nuvens-dispersas.jpg)";
-
-    } if (dados.weather[0].description === "névoa" || "neblina") {
+    } else if (
+        description === "névoa" ||
+        description === "neblina"
+    ) {
         meuBody.style.backgroundImage = "url(./image/nevoa.jpg)";
-
-    } if (dados.weather[0].description === "chuva") {
+    } else if (description.includes("chuva")) {
         meuBody.style.backgroundImage = "url(./image/chuva.jpg)";
-    } if (dados.weather[0].description === "céu limpo") {
+    } else if (description === "céu limpo") {
         meuBody.style.backgroundImage = "url(./image/ceu-limpo.jpg)";
-    }else{
-                meuBody.style.backgroundImage = "url(./image/img-fundo-inicial.jpg)";
-
+    } else {
+        meuBody.style.backgroundImage = "url(./image/img-fundo-inicial.jpg)";
     }
 
     // mostra o container com dados estilizados
