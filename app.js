@@ -7,6 +7,7 @@ const tempMax = document.querySelector(".t-max");
 const tempMim = document.querySelector(".t-mim");
 const velVento = document.querySelector(".v-vento");
 const titulo = document.querySelector(".titulo");
+const mensagem = document.querySelector(".mensagem");
 
 let situacaoTempo = document.querySelector(".p-situacao");
 
@@ -23,52 +24,67 @@ async function buscaCidade(cidadeBuscada) {
     console.log(dados);
 }
 
+const msgNovaTentativa = document.querySelector(".msg-nova-tentativa");
+const mapaErro = document.querySelector(".img-erro");
+
 const containerDados = document.querySelector(".container-info");
 const renderizaDados = (dados) => {
-    cidade.textContent = `Tempo em ${dados.name}`;
-    temp.textContent = dados.main.temp.toFixed(0) + "°C";
-    situacaoTempo.textContent = dados.weather[0].description;
-    tempMax.textContent = `Temp. Max. ${dados.main.temp_max.toFixed(0)}`;
-    tempMim.textContent = `Temp. Min. ${dados.main.temp_min.toFixed(0)}`;
-    imagemTempo.src = `https://openweathermap.org/img/wn/${dados.weather[0].icon}.png`;
+    // se encontrar
+    if (dados.cod === 200) {
+        cidade.textContent = `Tempo em ${dados.name}`;
+        temp.textContent = dados.main.temp.toFixed(0) + "°C";
+        situacaoTempo.textContent = dados.weather[0].description;
+        tempMax.textContent = `Temp. Max. ${dados.main.temp_max.toFixed(0)}`;
+        tempMim.textContent = `Temp. Min. ${dados.main.temp_min.toFixed(0)}`;
+        imagemTempo.src = `https://openweathermap.org/img/wn/${dados.weather[0].icon}.png`;
 
-    // pega o valor do vento em mt/s e transforma em km/h
-    const ventoEmKmHora = dados.wind.speed * 3.6;
-    
-    velVento.textContent = `Vento ${ventoEmKmHora.toFixed(2)}km/h`;
+        // pega o valor do vento em mt/s e transforma em km/h
+        const ventoEmKmHora = dados.wind.speed * 3.6;
 
-    umidadeAr.textContent = `Umidade ${dados.main.humidity}%`;
+        velVento.textContent = `Vento ${ventoEmKmHora.toFixed(2)}km/h`;
+        ("");
 
-    const description =  dados.weather[0].description
-    if (description === "nublado") {
-        meuBody.style.backgroundImage = "url(./image/nublado.jpg)";
-        // quando nublado muda o título pra branco por motivos de contraste
-        titulo.style.color = "#fff";
-    } else if (
-        description === "nuvens dispersas" ||
-        description === "algumas nuvens"
-    ) {
-        meuBody.style.backgroundImage = "url(./image/nuvens-dispersas.jpg)";
+        umidadeAr.textContent = `Umidade ${dados.main.humidity}%`;
 
-    } else if (
-        description === "névoa" ||
-        description === "neblina"
-    ) {
-        meuBody.style.backgroundImage = "url(./image/nevoa.jpg)";
+        const description = dados.weather[0].description;
+        if (description === "nublado") {
+            meuBody.style.backgroundImage = "url(./image/nublado.jpg)";
+            // quando nublado muda o título pra branco por motivos de contraste
+            titulo.style.color = "#fff";
+        } else if (
+            description === "nuvens dispersas" ||
+            description === "algumas nuvens"
+        ) {
+            meuBody.style.backgroundImage = "url(./image/nuvens-dispersas.jpg)";
+        } else if (description === "névoa" || description === "neblina") {
+            meuBody.style.backgroundImage = "url(./image/nevoa.jpg)";
+        } else if (description.includes("chuva")) {
+            meuBody.style.backgroundImage = "url(./image/chuva.jpg)";
+        } else if (description === "céu limpo") {
+            meuBody.style.backgroundImage = "url(./image/ceu-limpo.jpg)";
+        } else {
+            meuBody.style.backgroundImage =
+                "url(./image/img-fundo-inicial.jpg)";
+        }
 
-    } else if (description.includes("chuva")) {
-        meuBody.style.backgroundImage = "url(./image/chuva.jpg)";
+        // mostra o container com dados estilizados
+        containerDados.style.display = "block";
+        mapaErro.style.display = "none";
+        mensagem.textContent = "";
+        msgNovaTentativa.textContent = "";
 
-    } else if (description === "céu limpo") {
-        meuBody.style.backgroundImage = "url(./image/ceu-limpo.jpg)";
-
+        // se não encontrar
     } else {
-        meuBody.style.backgroundImage = "url(./image/img-fundo-inicial.jpg)";
+        mostraMensagemErro();
     }
-
-    // mostra o container com dados estilizados
-    containerDados.style.display = "block";
 };
+
+function mostraMensagemErro() {
+    mensagem.textContent = "Não foi possível encontrar a cidade.";
+    msgNovaTentativa.textContent = "Tente novamente!";
+    mapaErro.style.display = "block";
+    containerDados.style.display = "none";
+}
 
 formulario.addEventListener("submit", (evento) => {
     evento.preventDefault();
