@@ -43,7 +43,7 @@ const renderizaDados = (dados) => {
         titulo.style.color = "#fff"
         return
 
-    } else if (dados.weather[0].description === "nuvens dispersas") {
+    } else if (dados.weather[0].description === "nuvens dispersas" || "algumas nuvens") {
         meuBody.style.backgroundImage = "url(./image/nuvens-dispersas.jpg)";
 
     } if (dados.weather[0].description === "névoa" || "neblina") {
